@@ -1,4 +1,4 @@
-FROM python:3.11-slim-buster
+FROM python:3.11-slim-bookworm
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
