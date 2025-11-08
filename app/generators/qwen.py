@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+
 import torch
 from PIL import Image
 from diffusers import QwenImageEditPlusPipeline
@@ -6,8 +8,8 @@ import gc
 gc.collect()
 torch.cuda.empty_cache()
 
-pipeline = QwenImageEditPlusPipeline.from_pretrained("Qwen/Qwen-Image-Edit-2509", device_map="balanced", torch_dtype=torch.float16, cache_dir="../../models")
-print("pipeline loaded")
+cache_path = Path(__file__).parent.parent.parent / "models"
+pipeline = QwenImageEditPlusPipeline.from_pretrained("Qwen/Qwen-Image-Edit-2509", device_map="balanced", torch_dtype=torch.float16, cache_dir=cache_path)
 
 pipeline.to('cpu')
 
